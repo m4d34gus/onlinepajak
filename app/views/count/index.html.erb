@@ -1,0 +1,22 @@
+<p>
+  In 2014, there are 4 edges which have their own tax rate:<br>
+  <% @rules.each do |rule| %>
+    <% if rule.upper_limit == 0 %>
+      Above <%= rule.upper_limit %> the tax rate is <%= rule.tax_rate %><br>
+    <% else %>
+      From <%= rule.lower_limit %> to <%= rule.upper_limit %> tax rate is <%= rule.tax_rate %> <br>
+    <% end %>
+
+  <% end %>
+</p>
+
+<p>
+  <%= form_tag("/count", method: "POST") do %>
+  <%= label_tag(:income, "Please type your income:") %>
+  <%= text_field_tag(:income) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+</p>
+
+<br><br>
+<%= link_to 'Rules', rules_path %>

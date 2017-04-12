@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lower limit:</strong>
+  <%= @rule.lower_limit %>
+</p>
+
+<p>
+  <strong>Upper limit:</strong>
+  <%= @rule.upper_limit %>
+</p>
+
+<p>
+  <strong>Tax rate:</strong>
+  <%= @rule.tax_rate %>
+</p>
+
+<%= link_to 'Edit', edit_rule_path(@rule) %> |
+<%= link_to 'Back', rules_path %>
