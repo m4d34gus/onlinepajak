@@ -20,8 +20,6 @@ class CountController < ApplicationController
          tmpincome = income
        end
 
-       logger.debug tmpincome
-
        taxnominal += (tmpincome*rule.tax_rate)/100
        income -= tmpincome
 
