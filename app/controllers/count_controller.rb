@@ -8,14 +8,22 @@ class CountController < ApplicationController
     rules = Rule.all
     taxnominal=0
     for rule in rules
-       if income > rule.upper_limit && rule.upper_limit != 0
-         impincome = rule.upper_limit
+       if rule.upper_limit !=0
+         maxtax = rule.upper_limit - rule.lower_limit
        else
-         impincome = income
+         maxtax = income
        end
 
-       taxnominal =+ (impincome*rule.tax_rate)/100
-       income = income-rule.upper_limit
+       if income > maxtax && rule.upper_limit != 0
+         tmpincome = maxtax
+       else
+         tmpincome = income
+       end
+
+       logger.debug tmpincome
+
+       taxnominal += (tmpincome*rule.tax_rate)/100
+       income -= tmpincome
 
        if income <=0
          break

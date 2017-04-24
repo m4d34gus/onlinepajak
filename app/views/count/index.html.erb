@@ -2,9 +2,9 @@
   In 2014, there are 4 edges which have their own tax rate:<br>
   <% @rules.each do |rule| %>
     <% if rule.upper_limit == 0 %>
-      Above <%= rule.upper_limit %> the tax rate is <%= rule.tax_rate %><br>
+      Above <%= number_to_currency(rule.lower_limit, locale: :ina) %> the tax rate is <%= rule.tax_rate %>%<br>
     <% else %>
-      From <%= rule.lower_limit %> to <%= rule.upper_limit %> tax rate is <%= rule.tax_rate %> <br>
+      From <%= number_to_currency(rule.lower_limit, locale: :ina) %> to <%= number_to_currency(rule.upper_limit, locale: :ina) %> tax rate is <%= rule.tax_rate %>% <br>
     <% end %>
 
   <% end %>

@@ -1,1 +1,1 @@
-Your annual income tax amount will be: <%= @taxnominal %>
+Your annual income tax amount will be: <%= number_to_currency(@taxnominal, locale: :ina) %>
